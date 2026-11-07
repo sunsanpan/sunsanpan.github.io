@@ -161,8 +161,33 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
     </div>
   </article>
 
-  <!-- THEIA -->
+  <!-- MAAI ROBOT -->
   <article class="project flip">
+    <div class="media">
+      <figure><img src="images/robot_iso.png" alt="Render of the MAAI companion robot: cream head with round eyes and a screen on a pink deck, wearable charging dock on the left"><figcaption>Companion robot v4 with the wearable dock, 230 mm tall, 261 × 160 mm footprint</figcaption></figure>
+      <div class="row">
+        <figure><img src="images/robot_dock.png" alt="MAAI wearable lying in the charging dock pocket beside the robot deck"><figcaption>The MAAI wearable in its charging pocket</figcaption></figure>
+        <figure><img src="images/robot_xray.png" alt="X-ray render showing the Pi 5, servo, speaker and head electronics"><figcaption>Pi 5, pan servo, speaker and head electronics</figcaption></figure>
+      </div>
+      <figure><img src="images/robot_exploded.png" alt="Exploded view of the companion robot's printed parts"><figcaption>Exploded view: 10 printed parts, all collision-checked</figcaption></figure>
+    </div>
+    <div>
+      <div class="head"><h3>MAAI Companion Robot &amp; Charging Dock</h3><span class="when">PBL-III IoT, MIT-WPU · Oct 2026 – present</span></div>
+      <p class="tag">The next step for MAAI: a desk-top companion that talks, watches and charges the wearable</p>
+      <p>The wearable raises alerts; the robot is the friendly face at home. It sits on a bedside table, turns its head toward the person, shows a screen and animated eyes, listens and speaks, and has a dock on its side where the MAAI wearable drops in to charge every night.</p>
+      <ul>
+        <li><b>Architecture</b>: a Raspberry Pi 5 in the deck handles speech, vision and the 5" touch display; an ESP32-S3 in the head drives the two round GC9A01 eye displays, the 24 GHz mmWave presence radar, capacitive touch pads and the arm servos, linked to the Pi over USB.</li>
+        <li><b>Sensing</b>: Pi Camera Module 3 as the nose, MAX9814 microphone, HLK-LD2450 radar in the forehead for presence and position tracking, MPR121 touch pads for petting.</li>
+        <li><b>Motion and voice</b>: MG996R pan servo rotates the head ±70° on a glowing LED collar; two MG90S arms; 3 W speaker through an I²S amplifier; a red help button and a hardware camera-privacy switch on the deck.</li>
+        <li><b>Charging dock</b>: a 30 mm tier on the deck's left wall with a pocket profiled to the real wearable casing (1 mm clearance, slots for the strap loops, a notch for the power switch, relief under the sensors); the charging cable runs from a Pi USB port through the deck wall and up into the pocket.</li>
+        <li><b>Mechanical design</b>: fully parametric CadQuery model across four revisions; 10 printed parts on a 220 mm bed, every printed part checked against every component and the head swept through its full pan range with zero overlap; A3 drawings, print list and a costed bill of materials.</li>
+      </ul>
+      <div class="chips"><span class="chip">Raspberry Pi 5</span><span class="chip">ESP32-S3</span><span class="chip">mmWave radar</span><span class="chip">Servos</span><span class="chip">I²S audio</span><span class="chip">GC9A01</span><span class="chip">CadQuery</span><span class="chip">3D printing</span></div>
+    </div>
+  </article>
+
+  <!-- THEIA -->
+  <article class="project">
     <div class="media">
       <figure><img src="images/theia_hero.jpg" alt="THEIA payload enclosure render: white lid with triple-moon inlay, black vented shell"><figcaption>THEIA payload enclosure, 142 × 85 × 84.5 mm, generated from a parametric CadQuery script</figcaption></figure>
       <div class="row">
@@ -193,7 +218,7 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
   </article>
 
   <!-- HERMES -->
-  <article class="project">
+  <article class="project flip">
     <div class="media">
       <figure><img src="images/hermes_dashboard.jpg" alt="Hermes ground station dashboard with two camera feeds, a situation map and an alert feed" class="dark"><figcaption>Ground-station dashboard: live detections, GPS-tagged alerts on a map, payload telemetry</figcaption></figure>
       <div class="row">
@@ -223,7 +248,7 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
   </article>
 
   <!-- OBC -->
-  <article class="project flip">
+  <article class="project">
     <div class="media">
       <div class="diagram">
         <svg viewBox="0 0 640 330" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif" font-size="12">
@@ -279,7 +304,7 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
   </article>
 
   <!-- OTA / CFDP -->
-  <article class="project">
+  <article class="project flip">
     <div class="media">
       <div class="diagram">
         <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif" font-size="12">
@@ -337,7 +362,7 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
   </article>
 
   <!-- ARES -->
-  <article class="project flip">
+  <article class="project">
     <div class="media">
       <div class="diagram">
         <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif" font-size="12">
@@ -382,7 +407,7 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
   </article>
 
   <!-- DAA BOY -->
-  <article class="project">
+  <article class="project flip">
     <div class="media">
       <div class="row">
         <figure><img src="images/daaboy_photo.jpg" alt="Photo of the hand-held DAA-BOY console prototype" style="aspect-ratio:3/4"><figcaption>The first DAA-BOY prototype (photo)</figcaption></figure>
@@ -409,7 +434,7 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
   </article>
 
   <!-- small ones -->
-  <article class="project flip">
+  <article class="project">
     <div class="media">
       <figure><img src="images/theia_flow.png" alt="THEIA image flow diagram from source folders through two Coral stages"><figcaption>Related: the CanSat and CubeSat work feeds the same image pipeline shown for THEIA</figcaption></figure>
     </div>
