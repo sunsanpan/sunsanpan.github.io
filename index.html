@@ -133,8 +133,36 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
   <h2>Projects</h2>
   <p class="sub">Each one runs on real hardware. Renders and screenshots are from the actual project files.</p>
 
-  <!-- THEIA -->
+  <!-- MAAI -->
   <article class="project">
+    <div class="media">
+      <div class="row">
+        <figure><img src="images/maai_iso.png" alt="Render of the MAAI shoulder-wearable casing with engraved logo"><figcaption>Shoulder-wearable casing, 74.5 × 58.9 × 21.9 mm</figcaption></figure>
+        <figure><img src="images/maai_exploded.png" alt="Exploded view of the MAAI casing with PCB and modules"><figcaption>Lid, PCB, EC200U LTE module, sensors, tub</figcaption></figure>
+      </div>
+      <div class="row">
+        <figure><img src="images/maai_pcb.jpg" alt="MAAI v1.0 custom PCB layout"><figcaption>MAAI V1.0 custom PCB, 50 × 40 mm</figcaption></figure>
+        <figure><img src="images/maai_proto.jpg" alt="First MAAI prototype on perfboard with ESP32"><figcaption>First ESP32 prototype, 90 × 70 mm perfboard</figcaption></figure>
+      </div>
+      <figure><img src="images/maai_gui.png" alt="MAAI landing page: Care That Never Sleeps"><figcaption>Caregiver web app landing page</figcaption></figure>
+    </div>
+    <div>
+      <div class="head"><h3>MAAI · Medical AI Alert Interface</h3><span class="when">Founder · Aug 2025 – present</span></div>
+      <p class="tag">An AI-powered wearable that watches over elderly patients and alerts caregivers in real time</p>
+      <p>Named after the Hindi word for mother, MAAI is a startup I founded around a wearable that tracks vital signs and movement and raises alerts the moment something looks wrong. It started as a Smart India Hackathon entry and is now moving to a custom PCB and LTE.</p>
+      <ul>
+        <li>Tracks heart rate and SpO2 (MAX30102), ECG (AD8232), skin temperature (MLX90614) and motion (MPU6050); fall detection from the IMU.</li>
+        <li>Working <b>ESP32 + FreeRTOS</b> prototype with task-scheduled sensing and MQTT streaming to a live caregiver dashboard (Node bridge, WebSocket, CSV fallback).</li>
+        <li>Now porting to <b>STM32F446RE</b> on a custom 50 × 40 mm PCB with a Quectel EC200U LTE/GPS module for cellular caregiver alerts.</li>
+        <li>Camera-side monitoring: MediaPipe pose estimation detects falls from torso angle and sudden hip drop, complementing the sensor data.</li>
+        <li>Designed the two-part 3D-printed casing in CadQuery: PCB clamped by its edges, sensor apertures on the skin side, long-pin header stack so the pulse sensor sits 1 mm proud of the skin face, strap loops, engraved logo.</li>
+      </ul>
+      <div class="chips"><span class="chip">ESP32</span><span class="chip">STM32F446RE</span><span class="chip">FreeRTOS</span><span class="chip">MQTT</span><span class="chip">EC200U LTE/GPS</span><span class="chip">MediaPipe</span><span class="chip">CadQuery</span></div>
+    </div>
+  </article>
+
+  <!-- THEIA -->
+  <article class="project flip">
     <div class="media">
       <figure><img src="images/theia_hero.jpg" alt="THEIA payload enclosure render: white lid with triple-moon inlay, black vented shell"><figcaption>THEIA payload enclosure, 142 × 85 × 84.5 mm, generated from a parametric CadQuery script</figcaption></figure>
       <div class="row">
@@ -165,7 +193,7 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
   </article>
 
   <!-- HERMES -->
-  <article class="project flip">
+  <article class="project">
     <div class="media">
       <figure><img src="images/hermes_dashboard.jpg" alt="Hermes ground station dashboard with two camera feeds, a situation map and an alert feed" class="dark"><figcaption>Ground-station dashboard: live detections, GPS-tagged alerts on a map, payload telemetry</figcaption></figure>
       <div class="row">
@@ -195,7 +223,7 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
   </article>
 
   <!-- OBC -->
-  <article class="project">
+  <article class="project flip">
     <div class="media">
       <div class="diagram">
         <svg viewBox="0 0 640 330" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif" font-size="12">
@@ -251,7 +279,7 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
   </article>
 
   <!-- OTA / CFDP -->
-  <article class="project flip">
+  <article class="project">
     <div class="media">
       <div class="diagram">
         <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif" font-size="12">
@@ -380,36 +408,8 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
     </div>
   </article>
 
-  <!-- MAAI -->
-  <article class="project flip">
-    <div class="media">
-      <div class="row">
-        <figure><img src="images/maai_iso.png" alt="Render of the MAAI shoulder-wearable casing with engraved logo"><figcaption>Shoulder-wearable casing, 74.5 × 58.9 × 21.9 mm</figcaption></figure>
-        <figure><img src="images/maai_exploded.png" alt="Exploded view of the MAAI casing with PCB and modules"><figcaption>Lid, PCB, EC200U LTE module, sensors, tub</figcaption></figure>
-      </div>
-      <div class="row">
-        <figure><img src="images/maai_pcb.jpg" alt="MAAI v1.0 custom PCB layout"><figcaption>MAAI V1.0 custom PCB, 50 × 40 mm</figcaption></figure>
-        <figure><img src="images/maai_proto.jpg" alt="First MAAI prototype on perfboard with ESP32"><figcaption>First ESP32 prototype, 90 × 70 mm perfboard</figcaption></figure>
-      </div>
-      <figure><img src="images/maai_gui.png" alt="MAAI landing page: Care That Never Sleeps"><figcaption>Caregiver web app landing page</figcaption></figure>
-    </div>
-    <div>
-      <div class="head"><h3>MAAI · Medical AI Alert Interface</h3><span class="when">Founder · Aug 2025 – present</span></div>
-      <p class="tag">An AI-powered wearable that watches over elderly patients and alerts caregivers in real time</p>
-      <p>Named after the Hindi word for mother, MAAI is a startup I founded around a wearable that tracks vital signs and movement and raises alerts the moment something looks wrong. It started as a Smart India Hackathon entry and is now moving to a custom PCB and LTE.</p>
-      <ul>
-        <li>Tracks heart rate and SpO2 (MAX30102), ECG (AD8232), skin temperature (MLX90614) and motion (MPU6050); fall detection from the IMU.</li>
-        <li>Working <b>ESP32 + FreeRTOS</b> prototype with task-scheduled sensing and MQTT streaming to a live caregiver dashboard (Node bridge, WebSocket, CSV fallback).</li>
-        <li>Now porting to <b>STM32F446RE</b> on a custom 50 × 40 mm PCB with a Quectel EC200U LTE/GPS module for cellular caregiver alerts.</li>
-        <li>Camera-side monitoring: MediaPipe pose estimation detects falls from torso angle and sudden hip drop, complementing the sensor data.</li>
-        <li>Designed the two-part 3D-printed casing in CadQuery: PCB clamped by its edges, sensor apertures on the skin side, long-pin header stack so the pulse sensor sits 1 mm proud of the skin face, strap loops, engraved logo.</li>
-      </ul>
-      <div class="chips"><span class="chip">ESP32</span><span class="chip">STM32F446RE</span><span class="chip">FreeRTOS</span><span class="chip">MQTT</span><span class="chip">EC200U LTE/GPS</span><span class="chip">MediaPipe</span><span class="chip">CadQuery</span></div>
-    </div>
-  </article>
-
   <!-- small ones -->
-  <article class="project">
+  <article class="project flip">
     <div class="media">
       <figure><img src="images/theia_flow.png" alt="THEIA image flow diagram from source folders through two Coral stages"><figcaption>Related: the CanSat and CubeSat work feeds the same image pipeline shown for THEIA</figcaption></figure>
     </div>
