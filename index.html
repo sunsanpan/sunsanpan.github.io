@@ -114,7 +114,7 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
 
 <header class="hero"><div class="wrap">
   <h1>Embedded systems &amp; edge-AI engineer.</h1>
-  <p class="lead">I build flight software, satellite payloads, UAV perception stacks and handheld hardware, from the PCB and the 3D-printed enclosure up to the AI model running on it. Third-year B.Tech CSE (AI &amp; DS) at MIT World Peace University, Pune. CGPA 9.5/10.</p>
+  <p class="lead">I build flight software, satellite payloads, UAV perception stacks and handheld hardware, from the system architecture and the 3D-printed enclosure up to the AI model running on it. Third-year B.Tech CSE (AI &amp; DS) at MIT World Peace University, Pune. CGPA 9.5/10.</p>
   <div class="links">
     <a class="btn primary" href="mailto:sunnysantoshpandey@gmail.com">Email me</a>
     <a class="btn" href="https://linkedin.com/in/sunnysantoshpandey" target="_blank" rel="noopener">LinkedIn</a>
@@ -123,7 +123,7 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
   </div>
   <div class="kpis">
     <div class="kpi"><b>10+</b><span>embedded &amp; AI projects on real hardware</span></div>
-    <div class="kpi"><b>2</b><span>CubeSat flight-software stacks (OBC, UHF)</span></div>
+    <div class="kpi"><b>4</b><span>CubeSat flight &amp; payload software projects</span></div>
     <div class="kpi"><b>3</b><span>parametric 3D-printed enclosures designed</span></div>
     <div class="kpi"><b>1</b><span>startup founded (MAAI)</span></div>
   </div>
@@ -244,7 +244,7 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
         <li>Custom apps for each subsystem link: EPS (1 Hz housekeeping, boot-heartbeat response), ADCS, UHF (handshake, beacon and mode control), S-Band (downlink passthrough, file push) and payload (CM5 control, CFDP over TCP).</li>
         <li><b>Spacecraft mode manager</b>: BOOT → DETUMBLE → SAFE → NOMINAL → PAYLOAD_OPS → DOWNLINK, with autonomous boot-settle and battery-low-to-SAFE transitions, keeping the UHF receive path alive in SAFE as a comm lifeline.</li>
         <li>Unified all subsystem links on one framed envelope with <b>CRC-8/DVB-S2</b>, replacing a per-link mix of XOR and SMBus checksums; golden test vectors version-locked with each subsystem team's firmware.</li>
-        <li>~33-command telecommand catalog exposed to the OpenC3 COSMOS ground system; wire formats, MID map and operator interfaces documented beside the code.</li>
+        <li>~33-command telecommand catalog exposed to the OpenC3 COSMOS ground system; designed the overall link architecture and documented wire formats, MID map and operator interfaces beside the code.</li>
       </ul>
       <div class="chips"><span class="chip">NASA cFS / cFE</span><span class="chip">C</span><span class="chip">Linux</span><span class="chip">Raspberry Pi CM5</span><span class="chip">RS485 UART</span><span class="chip">TCP</span><span class="chip">CCSDS</span><span class="chip">OpenC3 COSMOS</span></div>
     </div>
@@ -305,59 +305,6 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
         <li>Verified a Class 2 round trip between MCC and OBC on the bench link with <b>byte-identical files</b>.</li>
       </ul>
       <div class="chips"><span class="chip">CCSDS CFDP Class 2</span><span class="chip">NASA CF</span><span class="chip">CCSDS Space Packets</span><span class="chip">OpenC3 COSMOS</span><span class="chip">Python</span><span class="chip">C</span></div>
-    </div>
-  </article>
-
-  <!-- UHF + MCC -->
-  <article class="project">
-    <div class="media">
-      <div class="diagram">
-        <svg viewBox="0 0 640 320" xmlns="http://www.w3.org/2000/svg" font-family="Inter,system-ui,sans-serif" font-size="12">
-          <defs><marker id="ar3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9aa3b2"/></marker></defs>
-          <!-- Satellite side -->
-          <rect x="20" y="20" width="290" height="280" rx="12" fill="#11141b" stroke="#ff7a45" stroke-width="1.5"/>
-          <text x="165" y="42" text-anchor="middle" fill="#ff7a45" font-weight="700">In orbit · uhf_fw (STM32U575, FreeRTOS)</text>
-          <g fill="#1e2430" stroke="#3a4454"><rect x="35" y="56" width="260" height="30" rx="6"/><rect x="35" y="94" width="260" height="30" rx="6"/><rect x="35" y="132" width="260" height="30" rx="6"/><rect x="35" y="170" width="260" height="30" rx="6"/><rect x="35" y="208" width="260" height="30" rx="6"/></g>
-          <g fill="#e8ebf1" text-anchor="middle" font-size="11">
-            <text x="165" y="75">OBC packets over UART</text>
-            <text x="165" y="113">PN scrambling</text>
-            <text x="165" y="151">Reed–Solomon (255,223) + rate-½ convolutional</text>
-            <text x="165" y="189">64-byte radio frames, 4GFSK 1 Mbps</text>
-            <text x="165" y="227">Si4464 radio @ 433 MHz</text>
-          </g>
-          <g stroke="#9aa3b2" stroke-width="1.2" marker-end="url(#ar3)"><line x1="165" y1="86" x2="165" y2="94"/><line x1="165" y1="124" x2="165" y2="132"/><line x1="165" y1="162" x2="165" y2="170"/><line x1="165" y1="200" x2="165" y2="208"/></g>
-          <text x="165" y="262" text-anchor="middle" fill="#9aa3b2" font-size="11">states: BEACONING · G_PASS · FALLBACK</text>
-          <text x="165" y="280" text-anchor="middle" fill="#9aa3b2" font-size="11">beacon every 30 s · NAND-flash telemetry FIFO</text>
-          <!-- Ground side -->
-          <rect x="330" y="20" width="290" height="280" rx="12" fill="#11141b" stroke="#5ac8fa" stroke-width="1.5"/>
-          <text x="475" y="42" text-anchor="middle" fill="#5ac8fa" font-weight="700">On the ground · mcc-openc3 (COSMOS 6.10)</text>
-          <g fill="#1e2430" stroke="#3a4454"><rect x="345" y="56" width="260" height="30" rx="6"/><rect x="345" y="94" width="260" height="30" rx="6"/><rect x="345" y="132" width="260" height="30" rx="6"/><rect x="345" y="170" width="260" height="30" rx="6"/><rect x="345" y="208" width="260" height="30" rx="6"/></g>
-          <g fill="#e8ebf1" text-anchor="middle" font-size="11">
-            <text x="475" y="75">GSaaS ground station (bent-pipe modem)</text>
-            <text x="475" y="113">WebSocket links: /link (UHF) · /sband</text>
-            <text x="475" y="151">Ruby protocol classes: descramble + RS/conv decode</text>
-            <text x="475" y="189">MYSAT target: 108 commands · 34 TM packets</text>
-            <text x="475" y="227">Operator screens, limits, CFDP procedures</text>
-          </g>
-          <g stroke="#9aa3b2" stroke-width="1.2" marker-end="url(#ar3)"><line x1="475" y1="86" x2="475" y2="94"/><line x1="475" y1="124" x2="475" y2="132"/><line x1="475" y1="162" x2="475" y2="170"/><line x1="475" y1="200" x2="475" y2="208"/></g>
-          <text x="475" y="262" text-anchor="middle" fill="#9aa3b2" font-size="11">uplink: BCH-coded CLTUs, 2GFSK 100 kbps</text>
-          <text x="475" y="280" text-anchor="middle" fill="#9aa3b2" font-size="11">nonce handshake starts every ground pass</text>
-          <g stroke="#e8ebf1" stroke-width="1.5" marker-end="url(#ar3)" marker-start="url(#ar3)"><line x1="310" y1="160" x2="330" y2="160"/></g>
-        </svg>
-      </div>
-    </div>
-    <div>
-      <div class="head"><h3>UHF Firmware &amp; Mission Control</h3><span class="when">STeRG CubeSat · Mar – Aug 2026</span></div>
-      <p class="tag">Two ends of one radio link: the comms board in orbit and the ground station that decodes it</p>
-      <p>The UHF board sits between the OBC and a 433 MHz Si4464 radio. Everything from CCSDS framing to forward error correction lives on one STM32, split across six FreeRTOS tasks. The Mission Control Centre on OpenC3 COSMOS does the matching decode on the ground.</p>
-      <ul>
-        <li><b>Downlink</b>: OBC packets are PN-scrambled, Reed–Solomon (255,223) and rate-½ convolutionally encoded, and sent as fixed 64-byte 4GFSK frames at 1 Mbps with descriptor frames for resync.</li>
-        <li><b>Uplink</b>: 2GFSK at 100 kbps; BCH-coded CLTU telecommands are decoded, descrambled and forwarded to the OBC.</li>
-        <li>Boots RF-inhibited until the OBC enables transmission. If the OBC is off, the board builds beacons itself from EPS and ADCS data over a single-wire daisy-chain UART.</li>
-        <li>Ground pass starts with a nonce handshake; telemetry buffered in a NAND-flash FIFO drains once the link is confirmed. Ported the radio driver to STeRG's own Si4464 breakout with a 25 MHz TCXO.</li>
-        <li>MCC plugin defines the MYSAT target (108 commands, 34 telemetry packets), telemetry limits, operator screens for ADCS, EPS, UHF, S-band, payload and sensors, and CFDP procedures. Replaced the UDP link with a custom WebSocket interface to the GSaaS ground station, treating it as a bent pipe and doing all coding in Ruby protocol classes.</li>
-      </ul>
-      <div class="chips"><span class="chip">STM32U575</span><span class="chip">FreeRTOS</span><span class="chip">Si4464</span><span class="chip">Reed–Solomon</span><span class="chip">CCSDS CLTU</span><span class="chip">OpenC3 COSMOS</span><span class="chip">Ruby</span><span class="chip">Docker</span></div>
     </div>
   </article>
 
@@ -457,7 +404,7 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
         <li>Camera-side monitoring: MediaPipe pose estimation detects falls from torso angle and sudden hip drop, complementing the sensor data.</li>
         <li>Designed the two-part 3D-printed casing in CadQuery: PCB clamped by its edges, sensor apertures on the skin side, long-pin header stack so the pulse sensor sits 1 mm proud of the skin face, strap loops, engraved logo.</li>
       </ul>
-      <div class="chips"><span class="chip">ESP32</span><span class="chip">STM32F446RE</span><span class="chip">FreeRTOS</span><span class="chip">MQTT</span><span class="chip">EC200U LTE/GPS</span><span class="chip">MediaPipe</span><span class="chip">PCB design</span><span class="chip">CadQuery</span></div>
+      <div class="chips"><span class="chip">ESP32</span><span class="chip">STM32F446RE</span><span class="chip">FreeRTOS</span><span class="chip">MQTT</span><span class="chip">EC200U LTE/GPS</span><span class="chip">MediaPipe</span><span class="chip">CadQuery</span></div>
     </div>
   </article>
 
@@ -483,7 +430,7 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
   <p class="sub">Where the projects above were built.</p>
   <div class="timeline">
     <div class="job"><div class="top"><div><h3>Software Engineer, Embedded Systems Team</h3><div class="org">Space Technology Research Group (STeRG), MIT-WPU, Pune</div></div><div class="org">Sep 2024 – present</div></div>
-      <ul><li>Flight and ground software for the STeRG CubeSat: OBC flight software on NASA cFS, CFDP file transfer, UHF firmware, mission control on OpenC3, and the THEIA payload AI pipeline.</li><li>CanSat flight software in Embedded C on STM32.</li></ul></div>
+      <ul><li>Flight and ground software for the STeRG CubeSat: OBC flight software on NASA cFS, CFDP file transfer, and the THEIA payload AI pipeline.</li><li>CanSat flight software in Embedded C on STM32.</li></ul></div>
     <div class="job"><div class="top"><div><h3>Founder</h3><div class="org">MAAI, Pune</div></div><div class="org">Jul 2025 – present</div></div>
       <ul><li>Founded a startup building an AI-powered wearable that monitors elderly patients' vital signs and alerts caregivers in real time.</li></ul></div>
     <div class="job"><div class="top"><div><h3>Tech Lead</h3><div class="org">IRIS, MIT-WPU, Pune</div></div><div class="org">present</div></div>
@@ -495,11 +442,11 @@ dialog.lb p{color:#ddd;text-align:center;font-size:13px;margin:8px 0 0}
   <h2>Skills</h2>
   <p class="sub">Tools I have shipped with, not just read about.</p>
   <div class="skills">
-    <div class="skill"><h4>Languages</h4>C, C++, Python, Ruby (COSMOS protocols), JavaScript</div>
+    <div class="skill"><h4>Languages</h4>C, C++, Python, JavaScript</div>
     <div class="skill"><h4>Embedded</h4>STM32 (F4, U5), ESP32, Arduino, Raspberry Pi 5 / CM5, FreeRTOS, HAL drivers, UART/RS485, I2C, SPI, ADC, DMA</div>
-    <div class="skill"><h4>Flight software</h4>NASA cFS/cFE, CCSDS space packets, CFDP, CLTU, Reed–Solomon / convolutional coding, OpenC3 COSMOS</div>
+    <div class="skill"><h4>Flight software</h4>NASA cFS/cFE, CCSDS space packets, CFDP, OpenC3 COSMOS</div>
     <div class="skill"><h4>AI &amp; robotics</h4>ROS 2, SLAM, Nav2, YOLOv8 / YOLO11, TensorFlow Lite, NCNN, Coral Edge TPU, Hailo-8L, OpenCV, MediaPipe</div>
-    <div class="skill"><h4>Hardware design</h4>Parametric CAD with CadQuery (STEP/STL, drawings, collision checks), 3D printing for PETG/ASA, PCB bring-up</div>
+    <div class="skill"><h4>Systems &amp; hardware design</h4>Embedded system architecture (sensor, compute and comms partitioning, wire protocols, mode managers), parametric CAD with CadQuery (STEP/STL, drawings, collision checks), 3D printing in PETG/ASA</div>
     <div class="skill"><h4>Tools</h4>STM32CubeIDE, VS Code, Git, Linux, Docker, MQTT / Mosquitto</div>
   </div>
 </div></section>
